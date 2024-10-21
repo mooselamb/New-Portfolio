@@ -19,7 +19,11 @@ span {
 
 p {
   line-height: 1.5;
-  font-style: 16px;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
 }
 
 li {
@@ -36,8 +40,9 @@ li {
 
 .row {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 0 12px;
 }
 
 h1 {
@@ -65,17 +70,24 @@ background: linear-gradient(0deg, rgba(248,248,248,1) 0%, rgba(255,255,255,1) 10
   background: rgb(255,255,255);
 background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(248,248,248,1) 100%);
 }
+
+.section--breaker__dark {
+  height: 26px;
+  width: 100%;
+  background: rgb(248,248,248);
+background: linear-gradient(180deg, rgba(248,248,248,1) 0%, rgba(36,36,36,1) 100%);
+}
 /* NAVIGATION BAR */
 
 nav {
   height: 100px;
   width: 100%;
-  min-width: 1000px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #f8f8f8;
+  padding: 0 12px;
 }
 
 .nav__link--list {
@@ -165,6 +177,7 @@ html {
 .about-me__info {
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
 }
 
 .about-me__info--container {
@@ -183,6 +196,28 @@ html {
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
   margin-bottom: 28px;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: popIn 1s ease-out forwards;
+  animation-delay: 1s; /* Adjust delay as needed */
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .about-me__picture {
@@ -198,11 +233,22 @@ html {
   margin-bottom: 28px;
 }
 
+.about-me__links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .about-me__link {
   font-size: 20px;
   color: black;
   text-decoration: none;
   padding: 0 16px;
+  transition: transform 0.3s ease;
+}
+
+.about-me__link:hover {
+  transform: scale(1.2);
 }
 
 .about-me__vid--container {
@@ -448,4 +494,178 @@ html {
 
 .project:last-child {
   margin-bottom: 40px;
+}
+
+/* FOOTER */
+.personal__logo {
+  display: flex;
+  justify-content: center;
+}
+
+
+footer {
+  background-color: #242424;
+  padding: 20px 0;
+}
+
+.my__mascot-img {
+  width: 150px;
+  height: 200px;
+}
+
+.my__mascot-bubble {
+  width: 150px;
+  height: 150px;
+  
+}
+
+.footer__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1% 0;
+}
+
+.footer__social--link,
+.footer__copyright {
+ color: #fff;
+}
+
+.footer__social--list {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer__social--link {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 5px 0;
+}
+
+.footer__social--link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.footer__social--link:hover {
+  color: #B197FC; /* Optional: change color on hover */
+}
+
+.footer__social--link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.main-content {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* MEDIA QUERIES */
+/* Small phones, tablets, and large phones (all less than 768px)  */
+@media (max-width: 768px) {
+  nav {
+    height: 68px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .about-me__info--para {
+    font-size: 18px;
+  }
+
+  .language__img--wrapper {
+    width: calc(100% / 2);
+  }
+
+  .project__description--para {
+    font-size: 14px;
+  }
+
+  .project__description {
+    padding-right: 30px;
+    left: 40px;
+  }
+
+  .about-me__vid--container {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media (max-width: 480px) {
+
+  .nav__link--list li:not(:last-child) {
+    display: none;
+  }
+
+  nav {
+    height: 68px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .about-me__info--para {
+    font-size: 16px;
+  }
+
+  .language__img--wrapper {
+    width: calc(100% / 2);
+  }
+
+  .project__description--para {
+    display: none;
+  }
+
+  .project__description {
+    padding-right: 30px;
+    left: 40px;
+    font-size: 14px;
+  }
+
+  .fa-solid {
+    font-size: 12px;
+  }
+
+  .about-me__vid--container {
+    width: 400px;
+    height: 400px;
+  } 
+
+  .language__img {
+    max-width: 50px;
+  }
+
+  .footer__social--link {
+    font-size: 14px;
+  }
+
+  .about-me__vid {
+    width: 90%;
+  }
 }
